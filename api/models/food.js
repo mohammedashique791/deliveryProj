@@ -6,7 +6,7 @@ const foodSchema = new mongoose.Schema({
     category: String,
     specificity: String,
     status: Boolean,
-    Hotel: String
+    Hotel: String,
 });
 
 const Food = mongoose.model('Food', foodSchema);
