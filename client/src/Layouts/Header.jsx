@@ -31,7 +31,7 @@ export default function Header() {
                     <input onChange={(ev)=> setItem(ev.target.value)} className="border-none outline-none p-2" type="text" placeholder="Search For Food or Hotel" />
                 </div>
                 <div className="flex items-center">
-                    <a href="">Poda</a>
+                    <button onClick={()=> alert('onn Poda manda')}>Podas</button>
                 </div>
 
             </header>
