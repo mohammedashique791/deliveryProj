@@ -36,6 +36,11 @@ app.post('/hotelAdding/:food/:location', async (req, res) => {
     res.json('hehe')
 })
 
+app.get('/allFoodDetails', async(req, res)=>{
+    const allFood = await Food.find({});
+    res.json(allFood);
+})
+
 
 
 // const foodSchema = new mongoose.Schema({

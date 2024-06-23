@@ -5,8 +5,8 @@ export const LayoutContext = createContext({});
 export default function Layout(){
     return(
         <LayoutContext.Provider>
-            <div className="flex flex-col w-full relative min-h-screen">
-                <Header />
+            <div className="flex flex-col min-h-screen">
+                <Header/>
                 <Outlet />
             </div>
         </LayoutContext.Provider>
