@@ -36,8 +36,8 @@ app.post('/hotelAdding/:food/:location', async (req, res) => {
     res.json('hehe')
 })
 
-app.get('/allFoodDetails', async(req, res)=>{
-    const allFood = await Food.find({});
+app.get('/allFoodDetails', async (req, res) => {
+    const allFood = await Food.find({}).populate('Hotel');
     res.json(allFood);
 })
 
@@ -53,7 +53,17 @@ app.get('/allFoodDetails', async(req, res)=>{
 // });
 
 
-app.post('/foodAdding', async(req, res) => {
+app.get('/dish/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const result = await Food.findById(id).populate('Hotel');
+        res.json(result);
+    } catch (e) {
+        res.status(500).json('Cannot find any dish with the id provided.');
+    }
+})
+
+app.post('/foodAdding', async (req, res) => {
     try {
         const { foodName, hotelName, price, category, specificity, isavailable } = req.body;
         newPrice = parseInt(price);
@@ -67,14 +77,20 @@ app.post('/foodAdding', async(req, res) => {
         else {
             res.status(500).json('type yes or no in small letter')
         }
-        const newFood = new Food({ name: foodName, price: newPrice, category: category, specificity: specificity, status: isavailable, Hotel: hotelName });
-        await newFood.save();
-        res.json('Added Food')
+        const newHotel = await Hotel.findOne({ name: hotelName });
+        if (newHotel) {
+            const newFood = new Food({ name: foodName, price: newPrice, category: category, specificity: specificity, status: newavailable, Hotel: newHotel._id });
+            await newFood.save();
+            res.json('Added Food')
+        }
+        else {
+            res.status(500).json('Cannot Find Provided Hotel')
+        }
     }
-    catch(e){
+    catch (e) {
         console.log('Error Adding Food. ');
     }
-    
+
 });
 
 app.listen(3000, () => {

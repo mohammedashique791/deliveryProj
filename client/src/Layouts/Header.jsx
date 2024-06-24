@@ -33,7 +33,6 @@ export default function Header() {
                 <div className="flex items-center">
                     <a href="">Poda</a>
                 </div>
-
             </header>
         </div>
     )

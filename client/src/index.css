@@ -6,6 +6,10 @@
   transition: 0.8s ease-in-out;
 }
 
+.pottappi {
+  transition: 0.8s ease-in-out;
+}
+
 .mandan:hover {
   background-color: #323d3d;
 }
