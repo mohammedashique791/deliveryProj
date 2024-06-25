@@ -1,3 +1,4 @@
+const { types, ref } = require("joi");
 const { default: mongoose } = require("mongoose");
 
 const foodSchema = new mongoose.Schema({
@@ -6,7 +7,7 @@ const foodSchema = new mongoose.Schema({
     category: String,
     specificity: String,
     status: Boolean,
-    Hotel: String
+    Hotel: {type:mongoose.Schema.Types.ObjectId, ref: 'Hotel'},
 });
 
 const Food = mongoose.model('Food', foodSchema);

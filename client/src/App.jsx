@@ -4,6 +4,8 @@ import axios from 'axios';
 import Layout from './Layout';
 import Home from './pages/HomePage';
 import HotelAdding from './pages/HotelAdding';
+import FoodAdding from './pages/FoodAdding';
+import DetailedPage from './pages/DetailedView';
 axios.defaults.baseURL = 'http://localhost:3000';
 axios.defaults.withCredentials = true;
 
@@ -14,6 +16,8 @@ function App() {
       <Route index element={<Home/>}/>
       <Route path='/' element={<Home/>}/>
       <Route path='/hotelAdding' element={<HotelAdding />}/>
+      <Route path='/addFood' element={<FoodAdding/>}/>
+      <Route path='/details/:id' element={<DetailedPage/>}/>
       </Route>
     </Routes>
   )

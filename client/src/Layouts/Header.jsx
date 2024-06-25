@@ -20,7 +20,7 @@ export default function Header() {
         <div className="">
             <header className="flex justify-between py-3">
                 <div className="flex items-center">
-                    <a href="">MyDelivery</a>
+                    <a className="text-2xl text-fonzzi font-semibold" href="">MyDelivery</a>
                 </div>
 
                 <div className="border flex gap-4 items-center px-5 py-1 rounded-xl">
@@ -33,7 +33,6 @@ export default function Header() {
                 <div className="flex items-center">
                     <button onClick={()=> alert('onn Poda manda')}>Podas</button>
                 </div>
-
             </header>
         </div>
     )

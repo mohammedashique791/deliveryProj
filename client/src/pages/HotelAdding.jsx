@@ -9,8 +9,9 @@
 
 import axios from "axios";
 import { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
-
+import { Navigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 
@@ -18,15 +19,13 @@ export default function HotelAdding() {
     const [foodName, setFoodName] = useState('');
     const [location, setLocation] = useState('');
     const [redirect, setRedirect] = useState(false);
+    const navigate = useNavigate();
     async function HotelAdd(ev){
         ev.preventDefault();
         const {data} = await axios.post(`/hotelAdding/${foodName}/${location}`);
-        setRedirect(true);
+        return navigate('/');
     }
 
-    if(redirect){
-        return <Navigate to={'/'} />
-    }
     return (
         <div>
             <form onSubmit={HotelAdd}>
@@ -40,6 +39,9 @@ export default function HotelAdding() {
                 </div>
                 <button className="bg-fonzzi px-14 py-2 rounded-3xl">Add</button>
             </form>
+            <div className="mt-10">
+            <Link to={'/addFood'} className="border p-2 rounded-xl bg-fonzzi">Add Food</Link>
+            </div>
         </div>
     )
 }

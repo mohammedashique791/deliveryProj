@@ -4,7 +4,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        fonzzi: '#ff385c'
+        fonzzi: '#ff385c',
+        second: '#ff5733',
       }
     },
   },
